@@ -1,6 +1,5 @@
 package com.example.bookingticket.homepage_lephamhungha_mobile;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,7 +7,6 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -18,13 +16,11 @@ import com.example.bookingticket.R;
 
 public class PayPageMainActivity extends AppCompatActivity {
     private ImageView btn_backpage;
-    private RadioGroup paymentMethodGroup;
+    private RadioButton radioBank, radioMomo, radioZaloPay;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_pay_page_main);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.paypage), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -33,8 +29,9 @@ public class PayPageMainActivity extends AppCompatActivity {
         });
 
         btn_backpage = findViewById(R.id.btn_backpage);
-        paymentMethodGroup = findViewById(R.id.payment_method_group);
-
+        radioBank = findViewById(R.id.radio_bank);
+        radioMomo = findViewById(R.id.radio_momo);
+        radioZaloPay = findViewById(R.id.radio_zalopay);
 
         btn_backpage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,21 +41,32 @@ public class PayPageMainActivity extends AppCompatActivity {
             }
         });
 
-        paymentMethodGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+        radioBank.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
+            public void onClick(View v) {
 
-                RadioButton radioButton = findViewById(checkedId);
-                if (radioButton != null) {
+                radioBank.setChecked(true);
+                radioMomo.setChecked(false);
+                radioZaloPay.setChecked(false);
+            }
+        });
 
-                    if (radioButton.getId() == R.id.radio_bank) {
+        radioMomo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                radioBank.setChecked(false);
+                radioMomo.setChecked(true);
+                radioZaloPay.setChecked(false);
+            }
+        });
 
-                    } else if (radioButton.getId() == R.id.radio_momo) {
-
-                    } else if (radioButton.getId() == R.id.radio_zalopay) {
-
-                    }
-                }
+        radioZaloPay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                radioBank.setChecked(false);
+                radioMomo.setChecked(false);
+                radioZaloPay.setChecked(true);
             }
         });
     }
