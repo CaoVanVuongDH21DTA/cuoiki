@@ -83,10 +83,10 @@ public class SeatActivity extends AppCompatActivity {
             seat.setPadding(8, 8, 8, 8);
 
             if (soldSeats.contains(seatName)) {
-                seat.setBackgroundColor(Color.GRAY); // Màu ghế đã bán
-                seat.setEnabled(false); // Không thể chọn ghế đã bán
+                seat.setBackgroundColor(Color.GRAY);
+                seat.setEnabled(false);
             } else {
-                seat.setBackgroundColor(Color.GREEN); // Màu ghế trống
+                seat.setBackgroundColor(Color.GREEN);
                 seat.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -120,7 +120,7 @@ public class SeatActivity extends AppCompatActivity {
             seats.append(seat).append(", ");
         }
         if (seats.length() > 0) {
-            seats.setLength(seats.length() - 2);  // Xóa dấu phẩy và khoảng trắng cuối cùng
+            seats.setLength(seats.length() - 2);
         }
 
         tvSelectedSeats.setText(String.format("%d Ghế: %s", selectedSeats.size(), seats.toString()));

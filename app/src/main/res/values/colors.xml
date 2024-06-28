@@ -13,6 +13,7 @@
     <color name="Grayhight">#E0E0E0</color>
     <color name="Aqua">#00FFFF	</color>
     <color name="grey">#E0E0E0</color>
-
-
+    <color name="Honeydew">#E0EEE0</color>
+    <color name="AquaLight">#00FFFF</color>
+    <color name="Green">#00FF00</color>
 </resources>
